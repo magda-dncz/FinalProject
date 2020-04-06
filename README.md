@@ -1,6 +1,3 @@
-# FinalProject
-Final project for CFG
-
 def get_pokemon_data():
     import requests
     stats = {}
