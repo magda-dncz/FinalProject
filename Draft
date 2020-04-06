@@ -40,6 +40,17 @@ def random_pokemon(stats):
     return stats[pokemon_number]
 
 
+def play(my_stat, opponent_stat):
+    if my_stat > opponent_stat:
+        print('You Win!')
+
+    elif my_stat < opponent_stat:
+        print('You Lose!')
+
+    else:
+        print('Draw!')
+
+
 def run():
     import requests
     import random
