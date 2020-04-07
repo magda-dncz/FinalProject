@@ -4,8 +4,9 @@ Pokemon game
 Game features:
 We have data for 151 Pokemons, the computer uses this data to pick the best stat to use based on percentiles.
 A coin flip is used to decide whose turn it is.
-There is a rematch option until you say you want a rematch.
+There is a rematch option so the game will repeat until you say you don't want a rematch.
 You can change your stat.
+You are told the difference in stats (how much you have won/lost by).
 The total score is kept count.
 
 ### Code
