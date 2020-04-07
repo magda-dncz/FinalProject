@@ -1,3 +1,12 @@
+# Final Project
+Pokemon game
+## Description
+blah blah
+### Code
+Please see the code below:
+
+```python
+
 def get_pokemon_data():
     import requests
     stats = {}
@@ -126,4 +135,4 @@ def run():
 
 
 run()
-
+```
