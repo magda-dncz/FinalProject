@@ -7,6 +7,7 @@ Please see the code below:
 
 ```python
 
+
 def get_pokemon_data():
     import requests
     stats = {}
@@ -63,20 +64,30 @@ def random_pokemon(stats):
     return stats[pokemon_number]
 
 
-def play(my_stat, opponent_stat):
+def play(my_stat, opponent_stat, won, lost):
     if my_stat > opponent_stat:
-        print('You Win!')
+        diff = my_stat - opponent_stat
+        print('You win by {}!'.format(str(int(diff))))
+        won += 1
 
     elif my_stat < opponent_stat:
-        print('You Lose!')
-
+        diff = opponent_stat - my_stat
+        print('You lose by {}!'.format(str(int(diff))))
+        lost += 1
     else:
         print('Draw!')
+    if won > lost:
+        wl = 'you are winning,'
+    elif won < lost:
+        wl = 'you are losing,'
+    else:
+        wl = 'it\'s a draw,'
+    print('So far, {} {} to {}.'.format(wl, str(won), str(lost)))
     rematch = input('Do you want a rematch? ').lower().strip()
     if rematch == 'yes':
-        return 1
+        return [1, won, lost]
     else:
-        return 0
+        return [0, won, lost]
 
 
 def run():
@@ -84,8 +95,8 @@ def run():
 
     stats = get_pokemon_data()
 
-    rematch = 1
-    while rematch:
+    rematch = [1, 0, 0]
+    while rematch[0]:
         my_pokemon = random_pokemon(stats)
         print('You were given {}, its ID is {}, weight is {} and height is {}.'.format(my_pokemon['name'],
                                                                                        my_pokemon['id'],
@@ -117,12 +128,12 @@ def run():
             if newstat_choice == 'no':
                 opponent_stat = opponent_pokemon[stat_choice]
                 my_stat = my_pokemon[stat_choice]
-                rematch = play(my_stat, opponent_stat)
+                rematch = play(my_stat, opponent_stat, rematch[1], rematch[2])
             else:
                 stat_choice = input('Which stat do you want to use instead? ').lower().strip()
                 my_stat = my_pokemon[stat_choice]
                 opponent_stat = opponent_pokemon[stat_choice]
-                rematch = play(my_stat, opponent_stat)
+                rematch = play(my_stat, opponent_stat, rematch[1], rematch[2])
 
         else:
             print('{}! Your opponents is choosing.'.format(coin_text))
@@ -130,9 +141,11 @@ def run():
             print('Your opponent chose {}.'.format(stat_choice))
             my_stat = my_pokemon[stat_choice]
             opponent_stat = opponent_pokemon[stat_choice]
-            rematch = play(my_stat, opponent_stat)
+            rematch = play(my_stat, opponent_stat, rematch[1], rematch[2])
     exit()
 
 
 run()
+
+
 ```
