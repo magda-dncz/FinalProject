@@ -1,7 +1,13 @@
 # Final Project
 Pokemon game
 ## Description
-blah blah
+Game features:
+We have data for 151 Pokemons, the computer uses this data to pick the best stat to use based on percentiles.
+A coin flip is used to decide whose turn it is.
+There is a rematch option until you say you want a rematch.
+You can change your stat.
+The total score is kept count.
+
 ### Code
 Please see the code below:
 
